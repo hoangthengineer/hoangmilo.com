@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Hoang Milo — software engineer building reliable platforms and thoughtful products."
+    />
+    <meta name="theme-color" content="#0c0b0a" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <title>Hoang Milo — Software Engineer</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <a class="logo" href="#" aria-label="Hoang Milo home">
+        <span class="logo-mark">hm</span>
+        <span class="logo-text">hoangmilo</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        data-menu-toggle
+      >
+        <span class="sr-only">Menu</span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </header>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" hidden data-mobile-nav>
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <p class="eyebrow reveal">hoangmilo.com</p>
+        <h1 id="hero-title" class="hero-title reveal">
+          Building systems<br />
+          <em>people can trust.</em>
+        </h1>
+        <p class="hero-lead reveal">
+          I'm <strong>Hoang Milo</strong> — a software engineer focused on
+          experimentation platforms, data infrastructure, and tools that help
+          teams ship with confidence.
+        </p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" href="#projects">View projects</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+        <dl class="hero-stats reveal" aria-label="Quick facts">
+          <div>
+            <dt>Based in</dt>
+            <dd>Ho Chi Minh City, Vietnam</dd>
+          </div>
+          <div>
+            <dt>Focus</dt>
+            <dd>Platform · MLOps · A/B testing</dd>
+          </div>
+          <div>
+            <dt>Currently</dt>
+            <dd>Software Engineer @ MoMo</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="about" class="section about" aria-labelledby="about-title">
+        <div class="section-label">01 — About</div>
+        <div class="about-grid">
+          <h2 id="about-title" class="section-title reveal">
+            Curious engineer,<br />steady builder.
+          </h2>
+          <div class="about-copy reveal">
+            <p>
+              I design and maintain platforms for experimentation, feature
+              flags, and reliable data collection — the kind of infrastructure
+              product teams depend on every day.
+            </p>
+            <p>
+              Day to day I work across backend services, automation, monitoring,
+              and close collaboration with data engineers and scientists. I
+              care about clear APIs, honest metrics, and documentation that
+              actually gets read.
+            </p>
+            <p class="about-aside">
+              Outside of work: learning in public, refining my craft, and
+              occasionally over-engineering side projects (in the best way).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="section work" aria-labelledby="work-title">
+        <div class="section-label">02 — Experience</div>
+        <h2 id="work-title" class="section-title reveal">Selected roles</h2>
+        <ol class="timeline reveal">
+          <li class="timeline-item">
+            <time datetime="2022-02">2022 — Present</time>
+            <div>
+              <h3>Software Engineer</h3>
+              <p class="timeline-org">MoMo (M_Service) · Experimentation Platform</p>
+              <ul>
+                <li>
+                  Design and maintain A/B testing, feature flagging, and
+                  experiment data pipelines.
+                </li>
+                <li>
+                  Partner with data teams on ingestion, monitoring, and
+                  automated experiment lifecycle tooling.
+                </li>
+                <li>
+                  Document APIs and platform practices for product and
+                  engineering stakeholders.
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="timeline-item">
+            <time datetime="2020">Earlier</time>
+            <div>
+              <h3>Engineering foundations</h3>
+              <p class="timeline-org">
+                University of Science (VNU-HCM) · Computer Science
+              </p>
+              <p>
+                Built a strong base in algorithms, systems, and shipping
+                software in production environments.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section skills" aria-labelledby="skills-title">
+        <div class="section-label">03 — Stack</div>
+        <h2 id="skills-title" class="section-title reveal">What I work with</h2>
+        <ul class="skill-grid reveal">
+          <li>Go / Java / Python</li>
+          <li>Kubernetes &amp; cloud-native ops</li>
+          <li>BigQuery &amp; data pipelines</li>
+          <li>Feature flags &amp; A/B platforms</li>
+          <li>Observability &amp; alerting</li>
+          <li>CI/CD &amp; platform automation</li>
+          <li>REST &amp; event-driven APIs</li>
+          <li>MLOps tooling</li>
+        </ul>
+      </section>
+
+      <section id="projects" class="section projects" aria-labelledby="projects-title">
+        <div class="section-label">04 — Projects</div>
+        <h2 id="projects-title" class="section-title reveal">Things I've shipped</h2>
+        <div class="project-grid reveal">
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-tag">Platform</span>
+              <span class="project-year">2024</span>
+            </div>
+            <h3>Experiment lifecycle automation</h3>
+            <p>
+              End-to-end tooling for experiment setup, tracking, anomaly
+              detection, and reporting — reducing manual ops for product teams.
+            </p>
+          </article>
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-tag">Data</span>
+              <span class="project-year">2023</span>
+            </div>
+            <h3>Experimentation data mesh</h3>
+            <p>
+              Reliable integration between live experiment events and analytics
+              warehouses, with schema contracts and quality checks.
+            </p>
+          </article>
+          <article class="project-card">
+            <div class="project-meta">
+              <span class="project-tag">Open source</span>
+              <span class="project-year">Side</span>
+            </div>
+            <h3>Developer utilities</h3>
+            <p>
+              Small tools and libraries on GitHub — pragmatic scripts and
+              patterns I reuse across projects.
+            </p>
+            <a
+              class="project-link"
+              href="https://github.com/hoangth99"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              github.com/hoangth99 →
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact" aria-labelledby="contact-title">
+        <div class="section-label">05 — Contact</div>
+        <div class="contact-panel reveal">
+          <h2 id="contact-title" class="contact-title">
+            Let's build<br /><em>something useful.</em>
+          </h2>
+          <p>
+            Open to interesting engineering conversations, collaboration, and
+            thoughtful side projects.
+          </p>
+          <ul class="contact-links">
+            <li>
+              <a href="mailto:hello@hoangmilo.com">hello@hoangmilo.com</a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/hoangth99"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/hoangth99"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span data-year></span> Hoang Milo. Crafted with care.</p>
+      <a href="#" class="back-top" data-back-top>Back to top ↑</a>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
