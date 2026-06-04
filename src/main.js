@@ -1,14 +1,11 @@
 import "./style.css";
 
 const header = document.querySelector("[data-header]");
-const menuToggle = document.querySelector("[data-menu-toggle]");
-const mobileNav = document.querySelector("[data-mobile-nav]");
 const yearEl = document.querySelector("[data-year]");
 const backTop = document.querySelector("[data-back-top]");
 const hudTime = document.querySelector("[data-hud-time]");
 const scrollProgress = document.querySelector("[data-scroll-progress]");
 const parallaxScene = document.querySelector("[data-parallax-scene]");
-const parallaxCards = document.querySelectorAll("[data-parallax-card]");
 
 if (yearEl) {
   yearEl.textContent = String(new Date().getFullYear());
@@ -31,33 +28,10 @@ function onScroll() {
     const y = window.scrollY * 0.35;
     parallaxScene.style.transform = `translate3d(0, ${y}px, 0) scale(1.05)`;
   }
-
-  parallaxCards.forEach((card) => {
-    if (reducedMotion) return;
-    const rect = card.getBoundingClientRect();
-    const center = rect.top + rect.height / 2 - window.innerHeight / 2;
-    const shift = center * 0.04;
-    card.style.transform = `translateY(${shift}px)`;
-  });
 }
 
 window.addEventListener("scroll", onScroll, { passive: true });
 onScroll();
-
-if (menuToggle && mobileNav) {
-  menuToggle.addEventListener("click", () => {
-    const open = menuToggle.getAttribute("aria-expanded") === "true";
-    menuToggle.setAttribute("aria-expanded", String(!open));
-    mobileNav.hidden = open;
-  });
-
-  mobileNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      menuToggle.setAttribute("aria-expanded", "false");
-      mobileNav.hidden = true;
-    });
-  });
-}
 
 if (backTop) {
   backTop.addEventListener("click", (e) => {
