@@ -5,31 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Hoang Milo — software engineer building reliable platforms and thoughtful products."
+      content="Hoang Milo — engineer, builder, cinematic storyteller at hoangmilo.com"
     />
-    <meta name="theme-color" content="#0c0b0a" />
+    <meta name="theme-color" content="#0c1218" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;1,400&family=Barlow:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-    <title>Hoang Milo — Software Engineer</title>
+    <title>HOANG MILO — Profile</title>
   </head>
   <body>
+    <div class="film-grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
+
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header" data-header>
       <a class="logo" href="#" aria-label="Hoang Milo home">
-        <span class="logo-mark">hm</span>
-        <span class="logo-text">hoangmilo</span>
+        <span class="rec-dot" aria-hidden="true"></span>
+        <span class="logo-text">HOANG MILO</span>
       </a>
       <nav class="nav" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+        <a href="#about">Story</a>
+        <a href="#work">Routes</a>
+        <a href="#projects">Films</a>
+        <a href="#contact" class="nav-cta">Collab</a>
       </nav>
       <button
         class="menu-toggle"
@@ -45,213 +49,263 @@
     </header>
 
     <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" hidden data-mobile-nav>
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a href="#about">Story</a>
+      <a href="#work">Routes</a>
+      <a href="#projects">Films</a>
+      <a href="#contact">Collab</a>
     </nav>
 
     <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <p class="eyebrow reveal">hoangmilo.com</p>
-        <h1 id="hero-title" class="hero-title reveal">
-          Building systems<br />
-          <em>people can trust.</em>
-        </h1>
-        <p class="hero-lead reveal">
-          I'm <strong>Hoang Milo</strong> — a software engineer focused on
-          experimentation platforms, data infrastructure, and tools that help
-          teams ship with confidence.
-        </p>
-        <div class="hero-actions reveal">
-          <a class="btn btn-primary" href="#projects">View projects</a>
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
-        </div>
-        <dl class="hero-stats reveal" aria-label="Quick facts">
-          <div>
-            <dt>Based in</dt>
-            <dd>Ho Chi Minh City, Vietnam</dd>
-          </div>
-          <div>
-            <dt>Focus</dt>
-            <dd>Platform · MLOps · A/B testing</dd>
-          </div>
-          <div>
-            <dt>Currently</dt>
-            <dd>Software Engineer @ MoMo</dd>
-          </div>
-        </dl>
-      </section>
+      <section class="hero cinematic" aria-labelledby="hero-title">
+        <div class="letterbox letterbox--top" aria-hidden="true"></div>
+        <div class="letterbox letterbox--bottom" aria-hidden="true"></div>
 
-      <section id="about" class="section about" aria-labelledby="about-title">
-        <div class="section-label">01 — About</div>
-        <div class="about-grid">
-          <h2 id="about-title" class="section-title reveal">
-            Curious engineer,<br />steady builder.
-          </h2>
-          <div class="about-copy reveal">
-            <p>
-              I design and maintain platforms for experimentation, feature
-              flags, and reliable data collection — the kind of infrastructure
-              product teams depend on every day.
-            </p>
-            <p>
-              Day to day I work across backend services, automation, monitoring,
-              and close collaboration with data engineers and scientists. I
-              care about clear APIs, honest metrics, and documentation that
-              actually gets read.
-            </p>
-            <p class="about-aside">
-              Outside of work: learning in public, refining my craft, and
-              occasionally over-engineering side projects (in the best way).
-            </p>
+        <div class="hero-scene" data-parallax-scene aria-hidden="true">
+          <div class="hero-sky"></div>
+          <div class="hero-mountains"></div>
+          <div class="hero-sun"></div>
+          <div class="hero-mist"></div>
+        </div>
+
+        <div class="hud hud--tl reveal">
+          <span class="hud-rec"><span class="rec-blink"></span> REC</span>
+          <span class="hud-time" data-hud-time>00:00:00:00</span>
+        </div>
+        <div class="hud hud--tr reveal">
+          <span class="hud-ep">EP. 01</span>
+          <span class="hud-res">4K · 24fps</span>
+        </div>
+        <div class="hud hud--bl reveal">
+          <span class="hud-coords" data-coords>10.8231° N · 106.6297° E</span>
+        </div>
+        <div class="hud hud--br reveal">
+          <span class="hud-loc">SAIGON, VN</span>
+        </div>
+
+        <div class="hero-content">
+          <p class="hero-tag reveal">hoangmilo.com · profile film</p>
+          <h1 id="hero-title" class="hero-title reveal">
+            <span class="title-sm">A film by</span>
+            <span class="title-main">HOANG MILO</span>
+            <span class="title-sub">Engineer on the road · building worlds in code</span>
+          </h1>
+
+          <div class="hero-cta reveal">
+            <a class="btn-play" href="#projects" aria-label="Watch selected work">
+              <span class="play-ring">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" fill="currentColor" />
+                </svg>
+              </span>
+              <span class="play-label">
+                <strong>Play reel</strong>
+                <small>Selected builds · 3 chapters</small>
+              </span>
+            </a>
+            <a class="btn-outline" href="#contact">Start a collab</a>
           </div>
+        </div>
+
+        <div class="hero-scroll reveal" aria-hidden="true">
+          <span>Scroll to explore</span>
+          <span class="scroll-line"></span>
         </div>
       </section>
 
-      <section id="work" class="section work" aria-labelledby="work-title">
-        <div class="section-label">02 — Experience</div>
-        <h2 id="work-title" class="section-title reveal">Selected roles</h2>
-        <ol class="timeline reveal">
-          <li class="timeline-item">
-            <time datetime="2022-02">2022 — Present</time>
-            <div>
+      <div class="destinations" aria-hidden="true">
+        <div class="destinations-track">
+          <span>Saigon</span><span>·</span><span>Platform</span><span>·</span>
+          <span>Experiments</span><span>·</span><span>Data trails</span><span>·</span>
+          <span>MLOps</span><span>·</span><span>Open road</span><span>·</span>
+          <span>Saigon</span><span>·</span><span>Platform</span><span>·</span>
+          <span>Experiments</span><span>·</span><span>Data trails</span><span>·</span>
+          <span>MLOps</span><span>·</span><span>Open road</span><span>·</span>
+        </div>
+      </div>
+
+      <section id="about" class="section" aria-labelledby="about-title">
+        <header class="chapter reveal">
+          <span class="chapter-num">CH. 01</span>
+          <h2 id="about-title" class="chapter-title">The Story</h2>
+          <p class="chapter-desc">Who's behind the lens</p>
+        </header>
+
+        <div class="story-grid reveal">
+          <div class="story-visual">
+            <div class="frame-card">
+              <div class="frame-thumb frame-thumb--1"></div>
+              <div class="frame-meta">
+                <span class="frame-loc">📍 Ho Chi Minh City</span>
+                <span class="frame-dur">Engineer · MoMo</span>
+              </div>
+            </div>
+          </div>
+          <div class="story-copy">
+            <p class="story-lead">
+              Every great trip needs a reliable map. I build the
+              <em>invisible maps</em> — experimentation platforms, feature flags,
+              and data trails product teams follow every day.
+            </p>
+            <p>
+              From A/B tests to warehouse pipelines, I work where backend,
+              automation, and data meet — always chasing systems that feel
+              effortless, like a perfect golden-hour shot.
+            </p>
+            <p class="story-foot">
+              Off the clock: new routes, new stacks, side quests that turn into
+              full seasons.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="section section--dark" aria-labelledby="work-title">
+        <header class="chapter reveal">
+          <span class="chapter-num">CH. 02</span>
+          <h2 id="work-title" class="chapter-title">The Routes</h2>
+          <p class="chapter-desc">Miles on the engineering road</p>
+        </header>
+
+        <ol class="route-list">
+          <li class="route-card reveal">
+            <div class="route-thumb"></div>
+            <div class="route-body">
+              <div class="route-tags">
+                <time datetime="2022-02">2022 — Present</time>
+                <span class="tag-live">LIVE</span>
+              </div>
               <h3>Software Engineer</h3>
-              <p class="timeline-org">MoMo (M_Service) · Experimentation Platform</p>
-              <ul>
-                <li>
-                  Design and maintain A/B testing, feature flagging, and
-                  experiment data pipelines.
-                </li>
-                <li>
-                  Partner with data teams on ingestion, monitoring, and
-                  automated experiment lifecycle tooling.
-                </li>
-                <li>
-                  Document APIs and platform practices for product and
-                  engineering stakeholders.
-                </li>
-              </ul>
+              <p class="route-place">MoMo · Experimentation Platform</p>
+              <p class="route-desc">
+                A/B testing, feature flags, experiment lifecycle automation,
+                and data pipelines — the long road of platform craft.
+              </p>
             </div>
           </li>
-          <li class="timeline-item">
-            <time datetime="2020">Earlier</time>
-            <div>
-              <h3>Engineering foundations</h3>
-              <p class="timeline-org">
-                University of Science (VNU-HCM) · Computer Science
-              </p>
-              <p>
-                Built a strong base in algorithms, systems, and shipping
-                software in production environments.
+          <li class="route-card reveal">
+            <div class="route-thumb route-thumb--edu"></div>
+            <div class="route-body">
+              <div class="route-tags">
+                <time datetime="2020">Earlier seasons</time>
+              </div>
+              <h3>Foundations</h3>
+              <p class="route-place">VNU-HCM · Computer Science</p>
+              <p class="route-desc">
+                Algorithms, systems, and learning to ship software that survives
+                the real world.
               </p>
             </div>
           </li>
         </ol>
       </section>
 
-      <section class="section skills" aria-labelledby="skills-title">
-        <div class="section-label">03 — Stack</div>
-        <h2 id="skills-title" class="section-title reveal">What I work with</h2>
-        <ul class="skill-grid reveal">
-          <li>Go / Java / Python</li>
-          <li>Kubernetes &amp; cloud-native ops</li>
-          <li>BigQuery &amp; data pipelines</li>
-          <li>Feature flags &amp; A/B platforms</li>
-          <li>Observability &amp; alerting</li>
-          <li>CI/CD &amp; platform automation</li>
-          <li>REST &amp; event-driven APIs</li>
-          <li>MLOps tooling</li>
+      <section class="section gear" aria-labelledby="gear-title">
+        <header class="chapter reveal">
+          <span class="chapter-num">—</span>
+          <h2 id="gear-title" class="chapter-title">The Kit</h2>
+          <p class="chapter-desc">Tools in the backpack</p>
+        </header>
+        <ul class="gear-list reveal">
+          <li>Go</li>
+          <li>Java</li>
+          <li>Python</li>
+          <li>K8s</li>
+          <li>BigQuery</li>
+          <li>A/B &amp; Flags</li>
+          <li>Events</li>
+          <li>MLOps</li>
         </ul>
       </section>
 
-      <section id="projects" class="section projects" aria-labelledby="projects-title">
-        <div class="section-label">04 — Projects</div>
-        <h2 id="projects-title" class="section-title reveal">Things I've shipped</h2>
-        <div class="project-grid reveal">
-          <article class="project-card">
-            <div class="project-meta">
-              <span class="project-tag">Platform</span>
-              <span class="project-year">2024</span>
+      <section id="projects" class="section" aria-labelledby="projects-title">
+        <header class="chapter reveal">
+          <span class="chapter-num">CH. 03</span>
+          <h2 id="projects-title" class="chapter-title">The Films</h2>
+          <p class="chapter-desc">Builds worth rewatching</p>
+        </header>
+
+        <div class="film-grid">
+          <article class="film-card reveal" data-parallax-card>
+            <div class="film-thumb film-thumb--a">
+              <span class="film-duration">12:40</span>
+              <span class="film-play" aria-hidden="true">▶</span>
             </div>
-            <h3>Experiment lifecycle automation</h3>
-            <p>
-              End-to-end tooling for experiment setup, tracking, anomaly
-              detection, and reporting — reducing manual ops for product teams.
-            </p>
+            <div class="film-info">
+              <span class="film-ep">Film 01</span>
+              <h3>Experiment Lifecycle</h3>
+              <p>Setup → track → detect → report. Automation for product teams.</p>
+              <span class="film-views">Platform · 2024</span>
+            </div>
           </article>
-          <article class="project-card">
-            <div class="project-meta">
-              <span class="project-tag">Data</span>
-              <span class="project-year">2023</span>
+          <article class="film-card reveal" data-parallax-card>
+            <div class="film-thumb film-thumb--b">
+              <span class="film-duration">08:15</span>
+              <span class="film-play" aria-hidden="true">▶</span>
             </div>
-            <h3>Experimentation data mesh</h3>
-            <p>
-              Reliable integration between live experiment events and analytics
-              warehouses, with schema contracts and quality checks.
-            </p>
+            <div class="film-info">
+              <span class="film-ep">Film 02</span>
+              <h3>Experiment Data Mesh</h3>
+              <p>Live events into warehouses — schema contracts, quality gates.</p>
+              <span class="film-views">Data · 2023</span>
+            </div>
           </article>
-          <article class="project-card">
-            <div class="project-meta">
-              <span class="project-tag">Open source</span>
-              <span class="project-year">Side</span>
+          <article class="film-card reveal" data-parallax-card>
+            <div class="film-thumb film-thumb--c">
+              <span class="film-duration">∞</span>
+              <span class="film-play" aria-hidden="true">▶</span>
             </div>
-            <h3>Developer utilities</h3>
-            <p>
-              Small tools and libraries on GitHub — pragmatic scripts and
-              patterns I reuse across projects.
-            </p>
-            <a
-              class="project-link"
-              href="https://github.com/hoangth99"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              github.com/hoangth99 →
-            </a>
+            <div class="film-info">
+              <span class="film-ep">Bonus</span>
+              <h3>Developer Utilities</h3>
+              <p>Scripts &amp; libraries on the open road.</p>
+              <a
+                class="film-link"
+                href="https://github.com/hoangth99"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Watch on GitHub →</a
+              >
+            </div>
           </article>
         </div>
       </section>
 
       <section id="contact" class="section contact" aria-labelledby="contact-title">
-        <div class="section-label">05 — Contact</div>
-        <div class="contact-panel reveal">
-          <h2 id="contact-title" class="contact-title">
-            Let's build<br /><em>something useful.</em>
-          </h2>
-          <p>
-            Open to interesting engineering conversations, collaboration, and
-            thoughtful side projects.
-          </p>
-          <ul class="contact-links">
-            <li>
-              <a href="mailto:hello@hoangmilo.com">hello@hoangmilo.com</a>
-            </li>
-            <li>
+        <div class="contact-cinematic reveal">
+          <div class="letterbox letterbox--top" aria-hidden="true"></div>
+          <div class="contact-inner">
+            <header class="chapter chapter--center">
+              <span class="chapter-num">FINALE</span>
+              <h2 id="contact-title" class="chapter-title">Collab?</h2>
+              <p class="chapter-desc">Let's shoot the next chapter together</p>
+            </header>
+            <a class="contact-email" href="mailto:hello@hoangmilo.com"
+              >hello@hoangmilo.com</a
+            >
+            <nav class="contact-links" aria-label="Social">
               <a
                 href="https://www.linkedin.com/in/hoangth99"
                 target="_blank"
                 rel="noopener noreferrer"
                 >LinkedIn</a
               >
-            </li>
-            <li>
               <a
                 href="https://github.com/hoangth99"
                 target="_blank"
                 rel="noopener noreferrer"
                 >GitHub</a
               >
-            </li>
-          </ul>
+            </nav>
+          </div>
+          <div class="letterbox letterbox--bottom" aria-hidden="true"></div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>© <span data-year></span> Hoang Milo. Crafted with care.</p>
-      <a href="#" class="back-top" data-back-top>Back to top ↑</a>
+      <span class="footer-brand">© <span data-year></span> HOANG MILO</span>
+      <span class="footer-tag">Shot on curiosity · Edited with code</span>
+      <a href="#" class="back-top" data-back-top aria-label="Back to top">TOP ↑</a>
     </footer>
 
     <script type="module" src="/src/main.js"></script>
