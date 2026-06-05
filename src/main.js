@@ -8,7 +8,6 @@ const hudStatus = document.querySelector("[data-hud-status]");
 const footerStatus = document.querySelector("[data-footer-status]");
 const scrollProgress = document.querySelector("[data-scroll-progress]");
 const matrixCanvas = document.querySelector("[data-matrix]");
-const neuralCanvas = document.querySelector("[data-neural]");
 const techGrid = document.querySelector("[data-tech-grid]");
 const typingEl = document.querySelector("[data-typing-text]");
 const tickerEl = document.querySelector("[data-ticker]");
@@ -18,6 +17,10 @@ if (yearEl) {
 }
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const isMobile = window.matchMedia("(max-width: 767px)").matches;
+const liteEffects = reducedMotion || isMobile;
+
+let scrollTicking = false;
 
 function onScroll() {
   if (header) {
@@ -29,10 +32,18 @@ function onScroll() {
     const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
     scrollProgress.style.width = `${pct}%`;
   }
-
 }
 
-window.addEventListener("scroll", onScroll, { passive: true });
+function queueScroll() {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(() => {
+    onScroll();
+    scrollTicking = false;
+  });
+}
+
+window.addEventListener("scroll", queueScroll, { passive: true });
 onScroll();
 
 if (backTop) {
@@ -103,14 +114,20 @@ if (tickerEl) {
   tickerEl.textContent = `${line}   ${line}`;
 }
 
-if (techGrid && !reducedMotion) {
+if (techGrid && !liteEffects) {
+  let gridTicking = false;
   window.addEventListener(
     "pointermove",
     (e) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      techGrid.style.setProperty("--mx", `${x}%`);
-      techGrid.style.setProperty("--my", `${y}%`);
+      if (gridTicking) return;
+      gridTicking = true;
+      requestAnimationFrame(() => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        techGrid.style.setProperty("--mx", `${x}%`);
+        techGrid.style.setProperty("--my", `${y}%`);
+        gridTicking = false;
+      });
     },
     { passive: true }
   );
@@ -121,7 +138,7 @@ function initMatrix(canvas) {
   if (!ctx) return;
 
   const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン$#@";
-  const fontSize = window.innerWidth < 640 ? 14 : 16;
+  const fontSize = window.innerWidth < 640 ? 14 : 18;
   let columns = 0;
   let drops = [];
 
@@ -161,107 +178,19 @@ function initMatrix(canvas) {
   window.addEventListener("resize", resize);
 
   let running = true;
+  let frame = 0;
   const loop = () => {
     if (!running) return;
-    draw();
+    frame += 1;
+    if (frame % 2 === 0) draw();
     requestAnimationFrame(loop);
   };
   loop();
 
-  return () => {
-    running = false;
-  };
-}
-
-function initNeural(canvas) {
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return;
-
-  const count = window.innerWidth < 640 ? 28 : 48;
-  let nodes = [];
-  let mouse = { x: 0, y: 0, active: false };
-  const linkDist = window.innerWidth < 640 ? 110 : 150;
-
-  const resize = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    nodes = Array.from({ length: count }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-    }));
-  };
-
-  window.addEventListener(
-    "pointermove",
-    (e) => {
-      mouse = { x: e.clientX, y: e.clientY, active: true };
-    },
-    { passive: true }
-  );
-
-  window.addEventListener("pointerleave", () => {
-    mouse.active = false;
+  document.addEventListener("visibilitychange", () => {
+    running = !document.hidden;
+    if (running) loop();
   });
-
-  const draw = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    for (const n of nodes) {
-      n.x += n.vx;
-      n.y += n.vy;
-      if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-      if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
-
-      if (mouse.active) {
-        const dx = mouse.x - n.x;
-        const dy = mouse.y - n.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < 180) {
-          n.x -= (dx / dist) * 0.4;
-          n.y -= (dy / dist) * 0.4;
-        }
-      }
-    }
-
-    for (let i = 0; i < nodes.length; i += 1) {
-      for (let j = i + 1; j < nodes.length; j += 1) {
-        const a = nodes[i];
-        const b = nodes[j];
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < linkDist) {
-          const alpha = (1 - dist / linkDist) * 0.35;
-          ctx.strokeStyle = `rgba(0, 255, 65, ${alpha})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    for (const n of nodes) {
-      ctx.fillStyle = "rgba(0, 255, 65, 0.55)";
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, 1.5, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  };
-
-  resize();
-  window.addEventListener("resize", resize);
-
-  let running = true;
-  const loop = () => {
-    if (!running) return;
-    draw();
-    requestAnimationFrame(loop);
-  };
-  loop();
 
   return () => {
     running = false;
@@ -270,10 +199,6 @@ function initNeural(canvas) {
 
 if (matrixCanvas && !reducedMotion) {
   initMatrix(matrixCanvas);
-}
-
-if (neuralCanvas && !reducedMotion) {
-  initNeural(neuralCanvas);
 }
 
 const revealEls = document.querySelectorAll(".reveal");
