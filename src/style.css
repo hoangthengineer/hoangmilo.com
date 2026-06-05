@@ -473,13 +473,15 @@ em {
   justify-content: space-between;
   min-height: var(--header-h);
   padding: var(--header-pad-top) var(--page-pad) 0.45rem;
-  transition: background 0.4s var(--ease), border-color 0.4s;
+  background: transparent;
+  border-bottom: none;
+  transition: background 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s;
 }
 
 .site-header.is-scrolled {
-  background: rgba(1, 10, 4, 0.94);
-  border-bottom: 1px solid var(--border-bright);
-  box-shadow: 0 1px 0 rgba(0, 255, 65, 0.06), 0 8px 40px rgba(0, 0, 0, 0.5);
+  background: rgba(1, 10, 4, 0.72);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
 }
 
 .logo {
@@ -848,15 +850,18 @@ em {
   flex-direction: column;
   gap: 0.25rem;
   padding: 0.5rem 0.65rem;
-  background: rgba(0, 12, 4, 0.6);
-  border: 1px solid var(--border);
+  background: rgba(0, 12, 4, 0.28);
+  border: 1px solid rgba(0, 255, 65, 0.14);
   border-radius: 3px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
   animation: hud-border-pulse 4s ease-in-out infinite;
 }
 
-.hud--tl,
-.hud--tr {
+.hud.hud--tl,
+.hud.hud--tr {
+  display: flex;
+  position: fixed;
+  z-index: 99;
   top: var(--hud-offset);
   min-width: 9.5rem;
   min-height: 2.65rem;
@@ -2094,6 +2099,12 @@ em {
   box-shadow: 0 6px 24px rgba(225, 48, 108, 0.25);
 }
 
+.contact-social--threads:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.08);
+}
+
 .contact-cta,
 .contact-social,
 .contact-cta-phone,
@@ -2119,7 +2130,7 @@ em {
 
 @media (min-width: 520px) and (max-width: 639px) {
   .contact-links {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.65rem;
   }
 
@@ -2293,22 +2304,42 @@ em {
 @media (max-width: 767px) {
   :root {
     --header-pad-top: 0;
-    --header-stack: var(--header-h);
+    --hud-offset: calc(var(--header-h) + 0.45rem);
+    --header-stack: calc(var(--header-h) + 3.1rem);
   }
 
   .site-header {
     align-items: center;
     padding-top: 0;
     padding-bottom: 0;
+    background: transparent;
   }
 
-  .hud--tl,
-  .hud--tr {
-    display: none;
+  .site-header.is-scrolled {
+    background: rgba(1, 10, 4, 0.78);
+  }
+
+  .hud.hud--tl,
+  .hud.hud--tr {
+    min-width: 0;
+    min-height: auto;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.5625rem;
+    gap: 0.15rem;
+    backdrop-filter: none;
+  }
+
+  .hud--tr .hud-ep {
+    font-size: 0.5625rem;
+  }
+
+  .hud--tr .hud-res {
+    font-size: 0.5rem;
+    letter-spacing: 0.03em;
   }
 
   .hero-content {
-    padding-top: calc(var(--header-stack) + 1.5rem);
+    padding-top: calc(var(--header-stack) + 0.75rem);
     padding-bottom: clamp(5.5rem, 12vh, 7rem);
   }
 
