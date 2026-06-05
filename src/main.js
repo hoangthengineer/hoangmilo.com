@@ -7,7 +7,6 @@ const hudTime = document.querySelector("[data-hud-time]");
 const hudStatus = document.querySelector("[data-hud-status]");
 const footerStatus = document.querySelector("[data-footer-status]");
 const scrollProgress = document.querySelector("[data-scroll-progress]");
-const parallaxScene = document.querySelector("[data-parallax-scene]");
 const matrixCanvas = document.querySelector("[data-matrix]");
 const neuralCanvas = document.querySelector("[data-neural]");
 const techGrid = document.querySelector("[data-tech-grid]");
@@ -31,10 +30,6 @@ function onScroll() {
     scrollProgress.style.width = `${pct}%`;
   }
 
-  if (parallaxScene && !reducedMotion) {
-    const y = window.scrollY * 0.35;
-    parallaxScene.style.transform = `translate3d(0, ${y}px, 0) scale(1.05)`;
-  }
 }
 
 window.addEventListener("scroll", onScroll, { passive: true });
@@ -302,89 +297,4 @@ if (revealEls.length && !reducedMotion) {
   });
 } else {
   revealEls.forEach((el) => el.classList.add("is-visible"));
-}
-
-function initSlideDeck(deck) {
-  const track = deck.querySelector("[data-slide-track]");
-  const slides = [...deck.querySelectorAll("[data-slide]")];
-  const prevBtn = deck.querySelector("[data-slide-prev]");
-  const nextBtn = deck.querySelector("[data-slide-next]");
-  const dotsWrap = deck.querySelector("[data-slide-dots]");
-  const counter = deck.querySelector("[data-slide-counter]");
-  const viewport = deck.querySelector("[data-slide-viewport]");
-
-  if (!track || !slides.length || !dotsWrap) return;
-
-  const total = slides.length;
-  let index = 0;
-  let timer;
-
-  const pad = (n) => String(n).padStart(2, "0");
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement("button");
-    dot.type = "button";
-    dot.className = "slide-dot";
-    dot.setAttribute("role", "tab");
-    dot.setAttribute("aria-label", `Slide ${i + 1}`);
-    dot.addEventListener("click", () => goTo(i));
-    dotsWrap.appendChild(dot);
-  });
-
-  const dots = [...dotsWrap.querySelectorAll(".slide-dot")];
-
-  const goTo = (next) => {
-    index = (next + total) % total;
-    track.style.transform = `translate3d(-${index * 100}%, 0, 0)`;
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("is-active", i === index);
-      slide.setAttribute("aria-hidden", i === index ? "false" : "true");
-    });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("is-active", i === index);
-      dot.setAttribute("aria-selected", i === index ? "true" : "false");
-    });
-    if (counter) {
-      counter.textContent = `${pad(index + 1)} / ${pad(total)}`;
-    }
-    resetAutoplay();
-  };
-
-  const resetAutoplay = () => {
-    clearInterval(timer);
-    if (reducedMotion) return;
-    timer = setInterval(() => goTo(index + 1), 5500);
-  };
-
-  prevBtn?.addEventListener("click", () => goTo(index - 1));
-  nextBtn?.addEventListener("click", () => goTo(index + 1));
-
-  deck.addEventListener("mouseenter", () => clearInterval(timer));
-  deck.addEventListener("mouseleave", resetAutoplay);
-
-  let startX = 0;
-  viewport?.addEventListener(
-    "touchstart",
-    (e) => {
-      startX = e.touches[0].clientX;
-    },
-    { passive: true }
-  );
-  viewport?.addEventListener(
-    "touchend",
-    (e) => {
-      const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 48) {
-        goTo(dx < 0 ? index + 1 : index - 1);
-      }
-    },
-    { passive: true }
-  );
-
-  goTo(0);
-}
-
-const slideDeck = document.querySelector("[data-slide-deck]");
-if (slideDeck) {
-  initSlideDeck(slideDeck);
 }

@@ -54,7 +54,6 @@
     <main id="main">
       <section class="hero cinematic" aria-labelledby="hero-title">
         <div class="letterbox letterbox--top" aria-hidden="true"></div>
-        <div class="letterbox letterbox--bottom" aria-hidden="true"></div>
 
         <div class="hero-scene" data-parallax-scene aria-hidden="true">
           <div class="hero-aurora"></div>
@@ -74,13 +73,6 @@
           <span class="hud-ep">root@hoangmilo</span>
           <span class="hud-res">AES-256 · SECURE</span>
         </div>
-        <div class="hud hud--bl reveal">
-          <span class="hud-coords" data-coords>LAT 10.8231 · LNG 106.6297</span>
-        </div>
-        <div class="hud hud--br reveal">
-          <span class="hud-loc" data-hud-status>SAIGON · VN</span>
-        </div>
-
         <div class="hero-content">
           <p class="hero-tag reveal" data-typing>
             <span class="hero-tag-bracket">&gt;</span>
@@ -119,9 +111,14 @@
           </div>
         </div>
 
-        <div class="hero-scroll reveal" aria-hidden="true">
-          <span>Scroll down</span>
-          <span class="scroll-line"></span>
+        <div class="hero-bottom reveal" aria-hidden="true">
+          <div class="hero-scroll">
+            <span>Scroll down</span>
+            <span class="scroll-line"></span>
+          </div>
+          <div class="hud hud--status">
+            <span class="hud-loc" data-hud-status>SAIGON · VN</span>
+          </div>
         </div>
       </section>
 
@@ -131,7 +128,6 @@
         aria-labelledby="contact-title"
       >
         <div class="contact-cinematic reveal">
-          <div class="letterbox letterbox--top" aria-hidden="true"></div>
           <div class="contact-inner">
             <header class="chapter chapter--center">
               <span class="chapter-num">// EXEC_COLLAB</span>
@@ -243,7 +239,6 @@
               </nav>
             </div>
           </div>
-          <div class="letterbox letterbox--bottom" aria-hidden="true"></div>
         </div>
       </section>
     </main>
